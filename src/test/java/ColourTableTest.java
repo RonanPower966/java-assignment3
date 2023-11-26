@@ -5,17 +5,32 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
 public class ColourTableTest {
 
     @Test
-    void TestConstructor(){
+    void TestConstructorSavesVar(){
         ColourTable table = new ColourTable(4);
         assertEquals(4,table.getColourNum());
     }
 
     @Test
-    void TestColourNum(){
-//        ColourTable table = new ColourTable(1026);
+    void ThrowsExceptionOver1024(){
         assertThrows(InvalidPaletteNumberException.class,
                 () -> {
-                    ColourTable table = new ColourTable(1026);
+                    new ColourTable(1025);
+                });
+    }
+
+    @Test
+    void ThrowsExceptionBelow2(){
+        assertThrows(InvalidPaletteNumberException.class,
+                () -> {
+                    new ColourTable(1);
+                });
+    }
+
+    @Test
+    void ThrowsExceptionWhenNotPower2(){
+        assertThrows(InvalidPaletteNumberException.class,
+                () -> {
+                    new ColourTable(7);
                 });
     }
 }
