@@ -13,24 +13,18 @@ public class ColourTableTest {
     @Test
     void ThrowsExceptionOver1024(){
         assertThrows(InvalidPaletteNumberException.class,
-                () -> {
-                    new ColourTable(1025);
-                });
+                () -> new ColourTable(1025));
     }
 
     @Test
     void ThrowsExceptionBelow2(){
         assertThrows(InvalidPaletteNumberException.class,
-                () -> {
-                    new ColourTable(1);
-                });
+                () -> new ColourTable(1));
     }
 
     @Test
     void ThrowsExceptionWhenNotPower2(){
         assertThrows(InvalidPaletteNumberException.class,
-                () -> {
-                    new ColourTable(7);
-                });
+                () -> new ColourTable(7));
     }
 }
