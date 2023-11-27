@@ -14,7 +14,7 @@ public class ColourTable {
             tempnum = tempnum/2;
         }
         this.colourNum = num;
-        this.palette = new byte[num][1];
+        this.palette = new byte[num][3];
 
     }
 

@@ -33,4 +33,11 @@ public class ColourTableTest {
         ColourTable table = new ColourTable(8);
         assertEquals(8, table.getPalette().length);
     }
+
+    @Test
+    void eachElementOfMatrixShouldHaveSize3(){
+        ColourTable table = new ColourTable(8);
+        byte[][] palette = table.getPalette();
+        assertEquals(3, palette[0].length);
+    }
 }
