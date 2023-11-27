@@ -78,4 +78,13 @@ public class ColourTableTest {
         assertEquals((byte) 231, table.palette[0][1]);
         assertEquals((byte) 9, table.palette[0][2]);
     }
+
+    @Test
+    void exceedingPaletteCapacityThrowsException(){
+        ColourTable table = new ColourTable(2);
+        table.add(1,2,3);
+        table.add(4,5,6);
+        assertThrows(ExceededPaletteMaximumException.class,
+                () -> table.add(7,8,9));
+    }
 }
