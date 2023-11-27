@@ -1,5 +1,6 @@
 public class ColourTable {
     private final int colourNum;
+    byte[][] palette;
 
     public ColourTable(int num) {
         if (num < 2 || num > 1024) {
@@ -13,6 +14,7 @@ public class ColourTable {
             tempnum = tempnum/2;
         }
         this.colourNum = num;
+        this.palette = new byte[num][1];
 
     }
 
@@ -20,4 +22,7 @@ public class ColourTable {
         return this.colourNum;
     }
 
+    public byte[][] getPalette() {
+        return this.palette;
+    }
 }
