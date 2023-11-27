@@ -18,6 +18,12 @@ public class ColourTable {
 
     }
 
+    public void add(int r, int g, int b) {
+        if(r>255 || g>255 || b>255 || r<0 || g<0 || b<0) {
+            throw new InvalidRGBValueException("RBG values must be between 0 and 255 inclusive.");
+        }
+    }
+
     public int getColourNum() {
         return this.colourNum;
     }

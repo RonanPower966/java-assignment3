@@ -40,4 +40,26 @@ public class ColourTableTest {
         byte[][] palette = table.getPalette();
         assertEquals(3, palette[0].length);
     }
+
+    @Test
+    void addThrowsExceptionWhenValuesAbove255(){
+        ColourTable table = new ColourTable(8);
+        assertThrows(InvalidRGBValueException.class,
+                () -> table.add(256,4,4));
+        assertThrows(InvalidRGBValueException.class,
+                () -> table.add(4,256,4));
+        assertThrows(InvalidRGBValueException.class,
+                () -> table.add(4,4,256));
+    }
+
+    @Test
+    void addThrowsExceptionWhenValuesBelow0(){
+        ColourTable table = new ColourTable(8);
+        assertThrows(InvalidRGBValueException.class,
+                () -> table.add(-5,4,4));
+        assertThrows(InvalidRGBValueException.class,
+                () -> table.add(4,-5,4));
+        assertThrows(InvalidRGBValueException.class,
+                () -> table.add(4,4,-5));
+    }
 }
