@@ -62,4 +62,20 @@ public class ColourTableTest {
         assertThrows(InvalidRGBValueException.class,
                 () -> table.add(4,4,-5));
     }
+
+    @Test
+    void addIncreasesPaletteIndexBy1(){
+        ColourTable table = new ColourTable(4);
+        table.add(3,3,3);
+        assertEquals(1, table.paletteIndex);
+    }
+
+    @Test
+    void rgbByteValuesAddedToPalette(){
+        ColourTable table = new ColourTable(8);
+        table.add(142, 231, 9);
+        assertEquals((byte) 142, table.palette[0][0]);
+        assertEquals((byte) 231, table.palette[0][1]);
+        assertEquals((byte) 9, table.palette[0][2]);
+    }
 }

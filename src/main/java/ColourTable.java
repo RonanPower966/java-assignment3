@@ -1,6 +1,7 @@
 public class ColourTable {
     private final int colourNum;
     byte[][] palette;
+    int paletteIndex = 0;
 
     public ColourTable(int num) {
         if (num < 2 || num > 1024) {
@@ -22,6 +23,12 @@ public class ColourTable {
         if(r>255 || g>255 || b>255 || r<0 || g<0 || b<0) {
             throw new InvalidRGBValueException("RBG values must be between 0 and 255 inclusive.");
         }
+
+        this.palette[this.paletteIndex][0] = (byte) r;
+        this.palette[this.paletteIndex][1] = (byte) g;
+        this.palette[this.paletteIndex][2] = (byte) b;
+        this.paletteIndex = this.paletteIndex + 1;
+
     }
 
     public int getColourNum() {
