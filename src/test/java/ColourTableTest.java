@@ -87,4 +87,13 @@ public class ColourTableTest {
         assertThrows(ExceededPaletteMaximumException.class,
                 () -> table.add(7,8,9));
     }
+
+    @Test
+    void repeatColoursThrowException(){
+        ColourTable table = new ColourTable(4);
+        table.add(1,2,3);
+        table.add(4,5,6);
+        assertThrows(ColourAlreadyExistsException.class,
+                () -> table.add(1,2,3));
+    }
 }
