@@ -7,6 +7,7 @@ public class ColourTable {
         if (num < 2 || num > 1024) {
             throw new InvalidPaletteNumberException("Number must be between 2 and 1024 inclusive");
         }
+        //Checks if num is a power of 2 by continuously dividing and getting the modulo of 2 until the number becomes 1.
         int tempnum = num;
         while (tempnum > 1) {
             if (tempnum % 2 != 0) {
@@ -20,13 +21,16 @@ public class ColourTable {
     }
 
     public void add(int r, int g, int b) {
+        //If next index added would be out of bounds
         if(this.paletteIndex>=this.palette.length){
             throw new ExceededPaletteMaximumException("Exceeded maximum palette capacity");
         }
 
+        //RGB values can only be between 0 and 255
         if(r>255 || g>255 || b>255 || r<0 || g<0 || b<0) {
-            throw new InvalidRGBValueException("RBG values must be between 0 and 255 inclusive.");
+            throw new InvalidRGBValueException("RGB values must be between 0 and 255 inclusive.");
         }
+        //Checks each colour in the palette and checks if colour already exists
         for (byte[] bytes : this.palette) {
             if (bytes[0] == (byte) r && bytes[1] == (byte) g && bytes[2] == (byte) b) {
                 throw new ColourAlreadyExistsException("Colour already exists in palette");
@@ -39,7 +43,6 @@ public class ColourTable {
         this.paletteIndex = this.paletteIndex + 1;
 
     }
-
     public int getColourNum() {
         return this.colourNum;
     }
